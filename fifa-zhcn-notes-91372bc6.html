@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>世界杯 · 中文情报站</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      background: #f2f4f6;
+      color: #1f2a3a;
+      line-height: 1.6;
+      padding: 0 1rem;
+    }
+
+    .page {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* 顶部导航 */
+    .top-nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.2rem 0;
+      border-bottom: 1px solid #dde2e8;
+      flex-wrap: wrap;
+    }
+
+    .logo {
+      font-weight: 600;
+      font-size: 1.3rem;
+      letter-spacing: 0.5px;
+      color: #1f2a3a;
+    }
+
+    .logo span {
+      color: #cc3d3d;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #3a4a5e;
+      font-size: 0.95rem;
+      font-weight: 500;
+      padding: 0.3rem 0;
+      border-bottom: 2px solid transparent;
+      transition: border-color 0.2s, color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: #1f2a3a;
+      border-bottom-color: #cc3d3d;
+    }
+
+    /* Hero */
+    .hero {
+      margin: 2.5rem 0 2rem;
+      padding: 2.5rem 2.2rem;
+      background: #ffffff;
+      border-radius: 20px;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04);
+      border: 1px solid #e6eaef;
+    }
+
+    .hero h1 {
+      font-size: 2.2rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      margin-bottom: 1rem;
+    }
+
+    .hero h1 small {
+      font-size: 1.1rem;
+      font-weight: 400;
+      color: #5d6f83;
+      display: block;
+      margin-top: 0.3rem;
+    }
+
+    .hero p {
+      font-size: 1.05rem;
+      color: #2c3b4e;
+      max-width: 780px;
+    }
+
+    .hero .meta-badge {
+      display: inline-block;
+      background: #eef1f5;
+      color: #2c3b4e;
+      padding: 0.2rem 1rem;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      margin-top: 1.2rem;
+      border: 1px solid #dce2e9;
+    }
+
+    /* 卡片式信息区块 */
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.8rem;
+      margin: 2.5rem 0;
+    }
+
+    .card {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 18px;
+      padding: 1.8rem 1.6rem;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.02);
+      transition: box-shadow 0.2s, transform 0.15s;
+    }
+
+    .card:hover {
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.04);
+      transform: translateY(-2px);
+    }
+
+    .card h3 {
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin-bottom: 0.8rem;
+      display: flex;
+      align-items: center;
+    }
+
+    .card h3 i {
+      display: inline-block;
+      width: 28px;
+      height: 28px;
+      background: #eef2f7;
+      border-radius: 8px;
+      margin-right: 10px;
+      text-align: center;
+      line-height: 28px;
+      font-style: normal;
+      color: #cc3d3d;
+      font-weight: 600;
+      font-size: 1rem;
+    }
+
+    .card p {
+      color: #2f4055;
+      font-size: 0.95rem;
+    }
+
+    .card + .card {
+      margin-top: 0; /* grid 管控 */
+    }
+
+    /* 常见说明 (faq) */
+    .faq-block {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 18px;
+      padding: 2rem 2rem 1.2rem 2rem;
+      margin: 2rem 0 2.5rem;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.02);
+    }
+
+    .faq-block h2 {
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin-bottom: 1.4rem;
+      letter-spacing: -0.01em;
+    }
+
+    .faq-item {
+      border-bottom: 1px solid #e8edf4;
+      padding: 0.9rem 0;
+    }
+
+    .faq-item:last-of-type {
+      border-bottom: none;
+    }
+
+    .faq-q {
+      font-weight: 600;
+      color: #1a283a;
+      display: block;
+      margin-bottom: 0.2rem;
+      font-size: 1rem;
+    }
+
+    .faq-a {
+      color: #3f536b;
+      font-size: 0.92rem;
+      margin-top: 0.3rem;
+    }
+
+    /* 页脚 */
+    .footer {
+      border-top: 1px solid #dce2ea;
+      padding: 1.8rem 0 2.5rem;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.9rem;
+      color: #4d6078;
+    }
+
+    .footer a {
+      color: #1f2a3a;
+      text-decoration: none;
+      border-bottom: 1px dotted #b8c4d4;
+    }
+
+    .footer a:hover {
+      border-bottom-color: #1f2a3a;
+    }
+
+    .footer small {
+      opacity: 0.75;
+    }
+
+    /* 响应式 */
+    @media (max-width: 680px) {
+      .top-nav {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.8rem;
+      }
+
+      .nav-links {
+        gap: 1.5rem;
+        flex-wrap: wrap;
+      }
+
+      .hero h1 {
+        font-size: 1.7rem;
+      }
+
+      .hero {
+        padding: 1.8rem 1.4rem;
+      }
+
+      .info-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .faq-block {
+        padding: 1.5rem 1.2rem;
+      }
+
+      .footer {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+  <!-- 导航 -->
+  <nav class="top-nav">
+    <div class="logo"><span>⚽</span> 世界杯·指南</div>
+    <ul class="nav-links">
+      <li><a href="#">情报</a></li>
+      <li><a href="#">赛程</a></li>
+      <li><a href="#">数据</a></li>
+      <li><a href="#">关于</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero 核心介绍 -->
+  <section class="hero">
+    <h1>
+      世界杯中文信息站
+      <small>比赛资讯 · 历史档案 · 实时动态</small>
+    </h1>
+    <p>
+      <a href="https://fifa-zhcn-worldcup.com" style="color:#cc3d3d; text-decoration: none; font-weight: 500;">世界杯</a> 
+      是覆盖全球最多观众的体育盛会。本站聚焦中文球迷的深度需求，聚合赛程、球队、球星与历届数据，提供可靠且及时的信息参考。无论是小组赛对阵、淘汰赛走势，还是经典战役复盘，都能在此获得清晰视角。
+    </p>
+    <span class="meta-badge">信息源自公开资料 · 持续更新</span>
+  </section>
+
+  <!-- 三个场景模块 (卡片) -->
+  <div class="info-grid">
+    <div class="card">
+      <h3><i>📋</i> 赛程与结果</h3>
+      <p>涵盖小组赛至决赛的完整赛历，比赛时间、场地、比分一屏总览。支持按轮次与队伍筛选，方便跟踪你关注的每一场对决。</p>
+    </div>
+    <div class="card">
+      <h3><i>🏆</i> 历史与纪录</h3>
+      <p>从1930年至今的冠军名录、射手榜、经典比赛回顾。历届东道主、最佳阵容、场均进球趋势等数据均整理为简洁条目，便于快速查阅。</p>
+    </div>
+    <div class="card">
+      <h3><i>🌐</i> 球队与球星</h3>
+      <p>各参赛队大名单、主力阵容预判、核心球员赛季表现。整合转会市场与国家队近况，辅助你更深度理解赛事走向。</p>
+    </div>
+  </div>
+
+  <!-- 常见说明 (FAQ 摘要) -->
+  <section class="faq-block">
+    <h2>常见说明</h2>
+
+    <div class="faq-item">
+      <span class="faq-q">信息更新频率？</span>
+      <div class="faq-a">比赛期间实时更新比分与数据，休赛期每周维护基础信息和历史条目。所有内容均标注参考来源，非官方预测仅供参考。</div>
+    </div>
+
+    <div class="faq-item">
+      <span class="faq-q">是否包含往届世界杯内容？</span>
+      <div class="faq-a">是的。站点内整理有1930年至最近一届的冠军、决赛比分、金靴得主以及小组赛扩展数据，方便做跨届对比。</div>
+    </div>
+
+    <div class="faq-item">
+      <span class="faq-q">数据来源可靠吗？</span>
+      <div class="faq-a">主要采用国际足联官方公开数据、主流体育媒体统计与维基百科结构化信息，并经过交叉核验。不提供未经证实的传闻。</div>
+    </div>
+
+    <div class="faq-item" style="border-bottom: none;">
+      <span class="faq-q">网站定位？</span>
+      <div class="faq-a">这是一个非官方的中文资料型站点，专注于信息整理与展示，帮助中文使用者更便捷地获取 
+        <a href="https://fifa-zhcn-worldcup.com" style="color: #1f2a3a; text-decoration: underline; text-decoration-style: dotted;">世界杯</a> 
+        相关内容。无博彩、无诱导注册，保持内容纯粹性。</div>
+    </div>
+  </section>
+
+  <!-- 页脚 -->
+  <footer class="footer">
+    <span>© 2025 · 世界杯中文站</span>
+    <span>
+      <a href="https://fifa-zhcn-worldcup.com">世界杯</a> · 
+      非官方 · 仅供参考
+    </span>
+    <small>版本 2.0</small>
+  </footer>
+</div>
+</body>
+</html>
